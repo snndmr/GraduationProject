@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<link href="../static/dist/css/styles.css" rel="stylesheet">
+
+<form action="{{url_for('machine')}}" class="form-inline" method="POST">
+    <div class="machine_wrapper" id="wrapper">
+        {% for instant in data %}
+        <button type="submit">
+            <div class="machine_box" onclick="x({{instant}})">
+                <img alt="cnc" src="../static/dist/img/cnc.jpg" width="100%">
+                <p>{{instant['machineId']}}
+                    <label>
+                        <input id="{{instant['machineId']}}" name="machineID" type="hidden">
+                    </label>
+                </p>
+                <p>{{instant['cnc_model']}}
+                    <label>
+                        <input id="{{instant['cnc_model']}}" name="cnc_model" type="hidden">
+                    </label>
+                </p>
+                <p>{{instant['cnc_age']}}
+                    <label>
+                        <input id="{{instant['cnc_age']}}" name="cnc_age" type="hidden">
+                    </label>
+                </p>
+            </div>
+        </button>
+        {% endfor %}
+    </div>
+</form>
+<script>
+    function x(instant) {
+        document.getElementById(instant['machineId']).value = instant['machineId'];
+        document.getElementById(instant['cnc_model']).value = instant['cnc_model'];
+        document.getElementById(instant['cnc_age']).value = instant['cnc_age'];
+    }
+</script>
+{% endblock body %}

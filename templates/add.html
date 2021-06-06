@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block body %}
+<br>
+<br>
+<div class="col-md-1"></div>
+<div class="col-md-10">
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">CNC ADDITION FORM</h3>
+            <br />
+        </div>
+        <form action="/add" method="POST" role="form">
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="machine_id">Machine ID</label>
+                    <input class="form-control" name="machineID" placeholder="Enter Machine ID" required type="number">
+                </div>
+                <div class="form-group">
+                    <label for="model">Model</label>
+                    <input class="form-control" max="1" min="0" name="model" placeholder="Enter model" required
+                           type="number">
+                </div>
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input class="form-control" name="age" placeholder="Enter age" required type="number">
+                </div>
+            </div>
+            <div class="box-footer">
+                <button class="btn btn-primary" onclick="clicked()" type="submit">Add Machine</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="col-md-1"></div>
+{% endblock body %}

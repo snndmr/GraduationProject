@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+{% block body %}
+<br/>
+<br/>
+<div class="col-md-1"></div>
+<div class="col-md-10">
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">CNC PREDICT FORM</h3>
+            <br/>
+        </div>
+        <form method="POST" role="form">
+            <div class="box-body">
+                <div class="form-group">
+                    <label>Registration Number</label>
+                    <input class="form-control" name="registrationNumber" placeholder="Please Enter Registration Number"
+                           required type="text">
+                </div>
+                <div class="form-group">
+                    <label>Machine ID</label>
+                    <input class="form-control" name="machineID" placeholder="Please Enter Machine ID" required
+                           type="number" value="{{data['machine_id']}}">
+                </div>
+                <div class="form-group">
+                    <label>Model</label>
+                    <input class="form-control" name="model" placeholder="Enter model" type="number"
+                           value="{{data['machine_model']}}">
+                </div>
+                <div class="form-group">
+                    <label>Age</label>
+                    <input class="form-control" name="age" placeholder="Enter age" type="number"
+                           value="{{data['machine_age']}}">
+                </div>
+                <div class="form-group">
+                    <label>Volt</label>
+                    <input class="form-control" name="volt" placeholder="Enter volt" type="number">
+                </div>
+                <div class="form-group">
+                    <label>Rotate</label>
+                    <input class="form-control" name="rotate" placeholder="Enter rotate" type="number">
+                </div>
+                <div class="form-group">
+                    <label>Pressure</label>
+                    <input class="form-control" name="pressure" placeholder="Enter pressure" type="number">
+                </div>
+                <div class="form-group">
+                    <label>Vibration</label>
+                    <input class="form-control" name="vibration" placeholder="Enter vibration" type="number">
+                </div>
+                <div class="form-group">
+                    <label>Error 1 Count</label>
+                    <input class="form-control" name="error1count" placeholder="Enter error1count" type="number">
+                </div>
+                <div class="form-group">
+                    <label>Error 2 Count</label>
+                    <input class="form-control" name="error2count" placeholder="Enter error2count" type="number">
+                </div>
+                <!--NAME SURNAME-->
+                <div class="form-group">
+                    <label>Error 3 Count</label>
+                    <input class="form-control" name="error3count" placeholder="Enter Error3count" type="number">
+                </div>
+                <div class="form-group">
+                    <label>Error 4 Count</label>
+                    <input class="form-control" name="error4count" placeholder="Enter Error4count" type="number">
+                </div>
+                <div class="form-group">
+                    <label>Error 5 Count</label>
+                    <input class="form-control" name="error5count" placeholder="Enter Error5count" type="number">
+                </div>
+            </div>
+            <div class="box-footer">
+                <button class="btn btn-primary" type="submit">Check</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="col-md-1"></div>
+{% endblock body %}

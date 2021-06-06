@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<base href="/machine/">
+<link href="{{ url_for('static', filename='styles/machine.css') }}" rel="stylesheet">
+<div class="row">
+    <div class="column-10"><img alt="cnc" src="../static/dist/img/milling-machine.svg"/></div>
+    <div class="column-spacer"></div>
+    <div class="column-80">
+        {% for item in data %}
+        <p id="machine_id">Machine ID : {{ item.machine_id }}</p>
+        <p>Machine Model : {{ item.machine_model }}</p>
+        <p>Machine Age: {{ item.machine_age }}</p>
+        {% endfor %}
+    </div>
+    <div class="column-10">
+        {% for item in data %}
+        <form action="/cnc" method="post">
+            <label>
+                <input hidden name="machine_id" type="text" value="{{ item.machine_id }}">
+                <input hidden name="cnc_model" type="text" value="{{ item.machine_model }}">
+                <input hidden name="cnc_age" type="text" value="{{ item.machine_age }}">
+            </label>
+            <button class="btn btn-primary" type="submit">Predict</button>
+        </form>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="grid-container">
+    <div class="All grid-item">
+        <canvas id="chartAll"></canvas>
+    </div>
+    <div class="pie grid-item">
+        <canvas id="chartFailure"></canvas>
+    </div>
+    <div class="a grid-item">
+        <canvas id="chartVolt"></canvas>
+    </div>
+    <div class="b grid-item">
+        <canvas id="chartRotate"></canvas>
+    </div>
+    <div class="c grid-item">
+        <canvas id="chartPressure"></canvas>
+    </div>
+    <div class="d grid-item">
+        <canvas id="chartVibration"></canvas>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.0/chart.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/1.0.1/chartjs-plugin-annotation.min.js"></script>
+<script src="../static/dist/js/machine.js"></script>
+{% endblock body %}

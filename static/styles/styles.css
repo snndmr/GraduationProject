@@ -1,0 +1,42 @@
+html,
+body {
+    margin: 0 auto;
+}
+
+.container {
+    margin-top: 100px;
+    gap: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.container:before {
+    content: none;
+}
+
+.box {
+    width: 100%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+.img-hover-zoom {
+    cursor: pointer;
+    padding: 20%;
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.img-hover-zoom img {
+    transition: transform .25s ease;
+}
+
+.img-hover-zoom:hover img {
+    transform: scale(1.2);
+}
+
+.info p {
+    font-size: 24px;
+    font-family: Andale Mono, monospace;
+}

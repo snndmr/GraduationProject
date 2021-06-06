@@ -1,0 +1,4 @@
+datetime;machineID;model;age;voltmean;rotatemean;pressuremean;vibrationmean;voltsd;rotatesd;pressuresd;vibrationsd;error1count;error2count;error3count;error4count;error5count;failure
+2.01.2015 07:00;1;model3;18;2,50E+16;4,75E+16;9,68E+14;4,04E+15;1,12E+16;4,87E+15;1,01E+16;4,85E+15;0;1;0;0;0;
+2.01.2015 10:00;5;model4;10;1,91E+15;4,84E+16;9,77E+15;3,98E+15;1,26E+16;4,69E+15;9,41E+15;6,30E+15;0;0;0;1;0;
+2.01.2015 13:00;3;model3;6;1,20E+15;4,16E+16;9,69E+15;4,00E+16;1,33E+16;4,28E+15;9,07E+15;5,88E+15;0;0;1;0;0;

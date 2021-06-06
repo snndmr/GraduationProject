@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<link href="{{ url_for('static', filename='styles/styles.css') }}" rel="stylesheet">
+
+<div class="container">
+    {% for instant in data %}
+    <form action="machine" id="{{ instant['machineId'] }}" method="post">
+        <div class="img-hover-zoom" onclick="x({{ instant['machineId'] }})">
+            <img alt="cnc" class="box" src="../static/img/cnc.jpg">
+            <div class="info">
+                <p id="{{ instant['machineId'] }}">ID : {{ instant['machineId'] }}</p>
+                <p id="{{ instant['cnc_model'] }}">Model: {{ instant['cnc_model'] }}</p>
+                <p id="{{ instant['cnc_age'] }}">Age : {{ instant['cnc_age'] }}</p>
+
+                <label>
+                    <input hidden name="machine_id" type="text" value="{{ instant['machineId'] }}">
+                    <input hidden name="machine_model" type="text" value="{{ instant['cnc_model'] }}">
+                    <input hidden name="machine_age" type="text" value="{{ instant['cnc_age'] }}">
+                </label>
+            </div>
+        </div>
+    </form>
+    {% endfor %}
+</div>
+<script>
+    function x(id) {
+        document.getElementById(id).submit()
+    }
+</script>
+{% endblock body %}
