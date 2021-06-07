@@ -21,6 +21,7 @@ machine_selected = 1
 def index():
     cursor = mysql.connection.cursor()
     cursor.execute("SELECT * FROM machines")
+    mysql.connection.commit()
     return render_template("index.html", data=cursor.fetchall())
 
 
@@ -42,6 +43,17 @@ def get_data():
     return '{}'.format(csv_data)
 
 
+@app.route('/delete', methods=["GET", "POST"])
+def delete():
+    if request.method == 'POST':
+        cursor = mysql.connection.cursor()
+        cursor.execute("DELETE FROM machines WHERE id={}".format(request.form['machine_id']))
+        cursor.execute("SELECT * FROM machines")
+        mysql.connection.commit()
+        flash("Hey, machine {} deleted!".format(request.form['machine_id']), "success")
+        return render_template("index.html", data=cursor.fetchall())
+
+
 @app.route('/machine', methods=["GET", "POST"])
 def machine():
     if request.method == 'POST':
@@ -57,16 +69,21 @@ def machine():
 @app.route("/add", methods=["GET", "POST"])
 def cnc_add():
     if request.method == 'POST':
+
         machine_id = float(request.form["machineID"])
         model = float(request.form["model"])
         age = float(request.form["age"])
+        file = request.files['file']
 
-        cursor = mysql.connection.cursor()
-        query = "Insert into machines (machineId, cnc_model, cnc_age) VALUES (%s,%s,%s)"
-        cursor.execute(query, (machine_id, model, age))
-        mysql.connection.commit()
-        cursor.close()
-        flash("Hey, {} added.".format(machine_id), "success")
+        if file.filename.rsplit('.', 1)[1] == 'csv':
+            file.save('static/datasets/{}'.format(file.filename))
+            cursor = mysql.connection.cursor()
+            query = "Insert into machines (machineId, cnc_model, cnc_age) VALUES (%s,%s,%s)"
+            cursor.execute(query, (machine_id, model, age))
+            mysql.connection.commit()
+            cursor.close()
+            flash("Hey, {} added.".format(machine_id), "success")
+        flash("Hey, The machine {} could not be added.".format(machine_id), "danger")
     return render_template("add.html")
 
 

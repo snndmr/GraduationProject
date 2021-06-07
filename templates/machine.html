@@ -24,6 +24,15 @@
             <button class="btn btn-primary" type="submit">Predict</button>
         </form>
         {% endfor %}
+        <br/>
+        {% for item in data %}
+        <form action="/delete" method="post">
+            <label>
+                <input hidden name="machine_id" type="text" value="{{ item.machine_id }}">
+            </label>
+            <button class="btn btn-primary" type="submit">Delete Machine</button>
+        </form>
+        {% endfor %}
     </div>
 </div>
 

@@ -35,7 +35,7 @@ p {
     align-items: center;
     justify-content: center;
     border: 1px solid black;
-    background-color: lightyellow;
+    background-color: white;
 }
 
 .row:after {
@@ -61,7 +61,7 @@ p {
     border-radius: 12px;
     box-shadow: 4px 4px;
     border: 1px solid black;
-    background-color: lightyellow;
+    background-color: white;
 }
 
 .All {
